@@ -4,40 +4,51 @@ destino_script="/usr/local/bin/mejiasAltaUser-Groups.sh"
 cat <<EOF | sudo tee "$destino_script" > /dev/null
 #!/bin/bash
 
-# Obtener los parámetros
-usuario_origen="\$1"
-archivo="\$2"
+# Usuario de referencia para obtener la clave
+USUARIO_ORIGEN="mejias"
 
-# Verificar que se pasaron los parámetros
-if [ -z "\$usuario_origen" ] || [ -z "\$archivo" ]; then
-    echo "Uso: \$0 <usuario_origen> <ruta_archivo_lista_usuarios>"
+# Ruta del archivo de usuarios
+LISTA="/home/mejias/UTN-FRA_SO_Examenes/202406/bash_script/Lista_Usuarios.txt"
+
+# Obtener la contraseña cifrada de 'mejias' desde /etc/shadow
+CLAVE_CIFRADA=$(sudo grep "^$USUARIO_ORIGEN:" /etc/shadow | cut -d: -f2)
+
+# Comprobar si se obtuvo la contraseña correctamente
+if [ -z "$CLAVE_CIFRADA" ]; then
+    echo "Error: No se pudo obtener la contraseña cifrada de $USUARIO_ORIGEN."
     exit 1
 fi
 
-# Obtener la clave del usuario origen
-clave=\$(getent shadow "\$usuario_origen" | cut -d: -f2)
-if [ -z "\$clave" ]; then
-    echo "No se pudo obtener la clave para el usuario \$usuario_origen"
-    exit 2
-fi
+# Separar las líneas del archivo por salto de línea
+ANT_IFS=$IFS
+IFS=$'\n'
 
-# Leer archivo línea por línea
-while IFS=, read -r usuario grupo_home dir_home
-do
+# Leer cada línea del archivo y procesar
+for i in $(cat "$LISTA" | awk -F ',' '{print $1" "$2" "$3}' | grep -v "#"); do
+    # Obtener los valores de cada línea
+    USUARIO_NUEVO=$(echo "$i" | awk '{print $1}')
+    GRUPO=$(echo "$i" | awk '{print $2}')
+    HOME_USR=$(echo "$i" | awk '{print $3}')
+
     # Crear el grupo si no existe
-    if ! getent group "\$grupo_home" > /dev/null 2>&1; then
-        groupadd "\$grupo_home"
+    if ! grep -q "^$GRUPO:" /etc/group; then
+        sudo groupadd "$GRUPO"
+        echo "Grupo creado: $GRUPO"
     fi
 
     # Crear el usuario si no existe
-    if ! id "\$usuario" &>/dev/null; then
-        useradd -m -g "\$grupo_home" -d "\$dir_home" -s "/bin/bash" "\$usuario"
-        echo "\$usuario:\$clave" | chpasswd
-        echo "Usuario \$usuario creado con éxito con la clave de \$usuario_origen."
+    if ! id "$USUARIO_NUEVO" &>/dev/null; then
+        sudo useradd -m -d "$HOME_USR" -s /bin/bash -G "$GRUPO" -p "$CLAVE_CIFRADA" "$USUARIO_NUEVO"
+        echo "Usuario creado: $USUARIO_NUEVO con grupo $GRUPO y home $HOME_USR"
     else
-        echo "El usuario \$usuario ya existe."
+        echo "El usuario $USUARIO_NUEVO ya existe, se omite la creación."
     fi
-done < "\$archivo"
+done
+
+# Restaurar IFS original
+IFS=$ANT_IFS
+
+echo "Proceso finalizado."
 EOF
 
 # Permisos al script mejiasAltaUser-Groups.sh
