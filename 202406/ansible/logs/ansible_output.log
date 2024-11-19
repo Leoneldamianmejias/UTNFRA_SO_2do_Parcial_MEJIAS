@@ -1,0 +1,120 @@
+2024-06-24 18:08:06,499 p=3444395 u=upszot n=ansible | [WARNING]: A duplicate localhost-like entry was found (localhost). First found localhost was 127.0.0.1
+
+2024-06-24 18:08:06,598 p=3444395 u=upszot n=ansible | PLAY [all] **********************************************************************************************************************************************************************************************************************************
+2024-06-24 18:08:06,609 p=3444395 u=upszot n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2024-06-24 18:08:07,746 p=3444395 u=upszot n=ansible | ok: [localhost]
+2024-06-24 18:08:07,775 p=3444395 u=upszot n=ansible | TASK [include_role : 2do_parcial] ***********************************************************************************************************************************************************************************************************
+2024-06-24 18:08:07,805 p=3444395 u=upszot n=ansible | TASK [2do_parcial : debug] ******************************************************************************************************************************************************************************************************************
+2024-06-24 18:08:07,817 p=3444395 u=upszot n=ansible | ok: [localhost] => {
+    "msg": "Tareas del 2do Parcial"
+}
+2024-06-24 18:08:07,836 p=3444395 u=upszot n=ansible | TASK [Otra tarea] ***************************************************************************************************************************************************************************************************************************
+2024-06-24 18:08:07,851 p=3444395 u=upszot n=ansible | ok: [localhost] => {
+    "msg": "Despues de la ejecucion del rol"
+}
+2024-06-24 18:08:07,885 p=3444395 u=upszot n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2024-06-24 18:08:07,885 p=3444395 u=upszot n=ansible | localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-11-18 19:59:47,651 p=2435 u=mejias n=ansible | [WARNING]: A duplicate localhost-like entry was found (localhost). First found localhost was 127.0.0.1
+
+2024-11-18 19:59:48,791 p=2435 u=mejias n=ansible | PLAY [all] *************************************************************************************************************************************************************************************
+2024-11-18 19:59:48,856 p=2435 u=mejias n=ansible | TASK [Gathering Facts] *************************************************************************************************************************************************************************
+2024-11-18 19:59:49,143 p=2435 u=mejias n=ansible | fatal: [127.0.0.1]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '127.0.0.1' (ED25519) to the list of known hosts.\r\nmejias@127.0.0.1: Permission denied (publickey).", "unreachable": true}
+2024-11-18 19:59:52,107 p=2435 u=mejias n=ansible | ok: [localhost]
+2024-11-18 19:59:52,130 p=2435 u=mejias n=ansible | TASK [include_role : 2do_parcial] **************************************************************************************************************************************************************
+2024-11-18 19:59:52,299 p=2435 u=mejias n=ansible | TASK [2do_parcial : debug] *********************************************************************************************************************************************************************
+2024-11-18 19:59:52,316 p=2435 u=mejias n=ansible | ok: [localhost] => {
+    "msg": "Tareas del 2do Parcial"
+}
+2024-11-18 19:59:52,330 p=2435 u=mejias n=ansible | TASK [2do_parcial : Crear directorios en /tmp/2do_parcial/] ************************************************************************************************************************************
+2024-11-18 19:59:52,981 p=2435 u=mejias n=ansible | changed: [localhost] => (item=alumno)
+2024-11-18 19:59:53,288 p=2435 u=mejias n=ansible | changed: [localhost] => (item=equipo)
+2024-11-18 19:59:53,301 p=2435 u=mejias n=ansible | TASK [2do_parcial : Agrego archivo desde template para alumno] *********************************************************************************************************************************
+2024-11-18 19:59:54,403 p=2435 u=mejias n=ansible | changed: [localhost]
+2024-11-18 19:59:54,421 p=2435 u=mejias n=ansible | TASK [2do_parcial : Agrego archivo desde template para equipo] *********************************************************************************************************************************
+2024-11-18 19:59:55,093 p=2435 u=mejias n=ansible | changed: [localhost]
+2024-11-18 19:59:55,107 p=2435 u=mejias n=ansible | TASK [2do_parcial : debug] *********************************************************************************************************************************************************************
+2024-11-18 19:59:55,136 p=2435 u=mejias n=ansible | ok: [localhost] => {
+    "msg": "Configurando sudoers para el grupo 2PSupervisores"
+}
+2024-11-18 19:59:55,158 p=2435 u=mejias n=ansible | TASK [2do_parcial : Configurar sudoers para que todo usuario del grupo '2PSupervisores' no requiera password al ejecutar sudo] *****************************************************************
+2024-11-18 19:59:55,538 p=2435 u=mejias n=ansible | fatal: [localhost]: FAILED! => {"changed": false, "module_stderr": "sudo: a password is required\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}
+2024-11-18 19:59:55,541 p=2435 u=mejias n=ansible | PLAY RECAP *************************************************************************************************************************************************************************************
+2024-11-18 19:59:55,541 p=2435 u=mejias n=ansible | 127.0.0.1                  : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2024-11-18 19:59:55,541 p=2435 u=mejias n=ansible | localhost                  : ok=6    changed=3    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2024-11-18 20:00:36,916 p=2694 u=mejias n=ansible | [WARNING]: A duplicate localhost-like entry was found (localhost). First found localhost was 127.0.0.1
+
+2024-11-18 20:00:37,555 p=2694 u=mejias n=ansible | PLAY [all] *************************************************************************************************************************************************************************************
+2024-11-18 20:00:37,585 p=2694 u=mejias n=ansible | TASK [Gathering Facts] *************************************************************************************************************************************************************************
+2024-11-18 20:00:37,763 p=2694 u=mejias n=ansible | fatal: [127.0.0.1]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '127.0.0.1' (ED25519) to the list of known hosts.\r\nmejias@127.0.0.1: Permission denied (publickey).", "unreachable": true}
+2024-11-18 20:00:41,398 p=2694 u=mejias n=ansible | ok: [localhost]
+2024-11-18 20:00:41,452 p=2694 u=mejias n=ansible | TASK [include_role : 2do_parcial] **************************************************************************************************************************************************************
+2024-11-18 20:00:41,566 p=2694 u=mejias n=ansible | TASK [2do_parcial : debug] *********************************************************************************************************************************************************************
+2024-11-18 20:00:41,603 p=2694 u=mejias n=ansible | ok: [localhost] => {
+    "msg": "Tareas del 2do Parcial"
+}
+2024-11-18 20:00:41,637 p=2694 u=mejias n=ansible | TASK [2do_parcial : Crear directorios en /tmp/2do_parcial/] ************************************************************************************************************************************
+2024-11-18 20:00:42,906 p=2694 u=mejias n=ansible | ok: [localhost] => (item=alumno)
+2024-11-18 20:00:43,517 p=2694 u=mejias n=ansible | ok: [localhost] => (item=equipo)
+2024-11-18 20:00:43,535 p=2694 u=mejias n=ansible | TASK [2do_parcial : Agrego archivo desde template para alumno] *********************************************************************************************************************************
+2024-11-18 20:00:45,182 p=2694 u=mejias n=ansible | ok: [localhost]
+2024-11-18 20:00:45,200 p=2694 u=mejias n=ansible | TASK [2do_parcial : Agrego archivo desde template para equipo] *********************************************************************************************************************************
+2024-11-18 20:00:46,232 p=2694 u=mejias n=ansible | ok: [localhost]
+2024-11-18 20:00:46,248 p=2694 u=mejias n=ansible | TASK [2do_parcial : debug] *********************************************************************************************************************************************************************
+2024-11-18 20:00:46,270 p=2694 u=mejias n=ansible | ok: [localhost] => {
+    "msg": "Configurando sudoers para el grupo 2PSupervisores"
+}
+2024-11-18 20:00:46,287 p=2694 u=mejias n=ansible | TASK [2do_parcial : Configurar sudoers para que todo usuario del grupo '2PSupervisores' no requiera password al ejecutar sudo] *****************************************************************
+2024-11-18 20:00:46,720 p=2694 u=mejias n=ansible | fatal: [localhost]: FAILED! => {"changed": false, "module_stderr": "sudo: a password is required\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}
+2024-11-18 20:00:46,726 p=2694 u=mejias n=ansible | PLAY RECAP *************************************************************************************************************************************************************************************
+2024-11-18 20:00:46,727 p=2694 u=mejias n=ansible | 127.0.0.1                  : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2024-11-18 20:00:46,727 p=2694 u=mejias n=ansible | localhost                  : ok=6    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2024-11-18 20:04:44,771 p=2955 u=mejias n=ansible | [WARNING]: A duplicate localhost-like entry was found (localhost). First found localhost was 127.0.0.1
+
+2024-11-18 20:04:45,700 p=2955 u=mejias n=ansible | localhost | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+2024-11-18 20:04:45,714 p=2955 u=mejias n=ansible | 127.0.0.1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+2024-11-18 20:07:29,020 p=3030 u=mejias n=ansible | localhost | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+2024-11-18 20:07:52,009 p=3067 u=mejias n=ansible | PLAY [all] *************************************************************************************************************************************************************************************
+2024-11-18 20:07:52,028 p=3067 u=mejias n=ansible | TASK [Gathering Facts] *************************************************************************************************************************************************************************
+2024-11-18 20:07:54,086 p=3067 u=mejias n=ansible | ok: [localhost]
+2024-11-18 20:07:54,106 p=3067 u=mejias n=ansible | TASK [include_role : 2do_parcial] **************************************************************************************************************************************************************
+2024-11-18 20:07:54,163 p=3067 u=mejias n=ansible | TASK [2do_parcial : debug] *********************************************************************************************************************************************************************
+2024-11-18 20:07:54,188 p=3067 u=mejias n=ansible | ok: [localhost] => {
+    "msg": "Tareas del 2do Parcial"
+}
+2024-11-18 20:07:54,203 p=3067 u=mejias n=ansible | TASK [2do_parcial : Crear directorios en /tmp/2do_parcial/] ************************************************************************************************************************************
+2024-11-18 20:07:54,753 p=3067 u=mejias n=ansible | ok: [localhost] => (item=alumno)
+2024-11-18 20:07:55,123 p=3067 u=mejias n=ansible | ok: [localhost] => (item=equipo)
+2024-11-18 20:07:55,135 p=3067 u=mejias n=ansible | TASK [2do_parcial : Agrego archivo desde template para alumno] *********************************************************************************************************************************
+2024-11-18 20:07:56,197 p=3067 u=mejias n=ansible | ok: [localhost]
+2024-11-18 20:07:56,214 p=3067 u=mejias n=ansible | TASK [2do_parcial : Agrego archivo desde template para equipo] *********************************************************************************************************************************
+2024-11-18 20:07:56,879 p=3067 u=mejias n=ansible | ok: [localhost]
+2024-11-18 20:07:56,892 p=3067 u=mejias n=ansible | TASK [2do_parcial : debug] *********************************************************************************************************************************************************************
+2024-11-18 20:07:56,914 p=3067 u=mejias n=ansible | ok: [localhost] => {
+    "msg": "Configurando sudoers para el grupo 2PSupervisores"
+}
+2024-11-18 20:07:56,930 p=3067 u=mejias n=ansible | TASK [2do_parcial : Configurar sudoers para que todo usuario del grupo '2PSupervisores' no requiera password al ejecutar sudo] *****************************************************************
+2024-11-18 20:07:57,554 p=3067 u=mejias n=ansible | changed: [localhost]
+2024-11-18 20:07:57,564 p=3067 u=mejias n=ansible | TASK [Otra tarea] ******************************************************************************************************************************************************************************
+2024-11-18 20:07:57,589 p=3067 u=mejias n=ansible | ok: [localhost] => {
+    "msg": "Despues de la ejecucion del rol"
+}
+2024-11-18 20:07:57,615 p=3067 u=mejias n=ansible | PLAY RECAP *************************************************************************************************************************************************************************************
+2024-11-18 20:07:57,617 p=3067 u=mejias n=ansible | localhost                  : ok=8    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

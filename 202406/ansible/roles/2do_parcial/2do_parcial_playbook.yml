@@ -1,0 +1,7 @@
+---
+- name: Ejecutar tareas del 2do parcial
+  hosts: all
+  become: yes 
+  roles:
+    - 2do_parcial 
+
